@@ -1,3 +1,6 @@
+### Fork from [Vtrois's Kratos](https://github.com/Vtrois/Kratos)
+由于已经改了挺多的了~所以直接新建了一个仓库~
+
 # Kratos
 
 A clean, simple and responsive blog theme of WordPress, based on [Bootstrap](https://github.com/twbs/bootstrap) and [Font Awesome](https://github.com/FortAwesome/Font-Awesome). Created and maintained by Vtrois. Stay up to date with the latest release and announcements on [Bulletin Board](https://github.com/Vtrois/Kratos/issues). 
