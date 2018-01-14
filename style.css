@@ -326,7 +326,8 @@ table,table tbody tr th {
 }
 
 #kratos-blog-post {
-	padding: 2em 0 2em
+	/*padding: 2em 0 2em*/
+	padding: 0
 }
 
 #kratos-blog-post p .aligncenter {
@@ -359,7 +360,8 @@ table,table tbody tr th {
 	}
 
 	#kratos-blog-post {
-		padding: 2em 0 1em
+		/*padding: 2em 0 1em*/
+		padding: 0;
 	}
 }
 

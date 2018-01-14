@@ -62,12 +62,5 @@
 						<?php wp_nav_menu( $defaults ); ?>
                     </div>
                 </div>
-				<?php
-				if ( function_exists( 'yoast_breadcrumb' ) ) { ?>
-                    <div class="container">
-						<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
-                    </div>
-				<?php }
-				?>
             </header>
         </div>
