@@ -198,34 +198,29 @@
 		}
 
 	var gotop = function() {
-		var offset = 300,
-			offset_opacity = 1200,
-			scroll_top_duration = 700,
-			$back_to_top = $('.cd-top'),
-			$cd_gb = $('.cd-gb'),
-			$cd_weixin = $('.cd-weixin');
-		$(window).scroll(function(){
-			( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
-			if( $(this).scrollTop() > offset_opacity ) { 
-				$back_to_top.addClass('cd-fade-out');
-				$cd_gb.addClass('cd-fade-out');
-				$cd_weixin.addClass('cd-fade-out');
-			}
-		});
-		$back_to_top.on('click', function(event){
-			event.preventDefault();
-			$('body,html').animate({
-				scrollTop: 0 ,
-			 	}, scroll_top_duration
-			);
-		});
+        $('.gotop-btn').on('click', function(event){
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $('html').offset().top
+            }, 500, 'easeInOutExpo');
+            return false;
+        });
+
+        $(window).scroll(function(){
+            var $win = $(window);
+            if ($win.scrollTop() > 200) {
+                $('.gotop-box').addClass('active');
+            } else {
+                $('.gotop-box').removeClass('active');
+            }
+        });
 	}
-	
+
 	var weixinpic = function() {
-		$("#weixin-img").mouseout(function(){
+		$(".weixin-box").mouseout(function(){
 	        $("#weixin-pic")[0].style.display = 'none';
 	    })
-		$("#weixin-img").mouseover(function(){
+		$(".weixin-box").mouseover(function(){
 	        $("#weixin-pic")[0].style.display = 'block';
 	    })
 	}
@@ -234,12 +229,25 @@
 		layer.photos({
 		  photos: '.kratos-post-content'
 		  ,anim: 0
-		}); 
+		});
 	}
 
 	var copyright = function() {
 		console.log("项目托管：https://github.com/Vtrois/Kratos");
 	}
+
+	var search = function () {
+        $('.search-box').on("click", function(e) {
+            $("#searchform").animate({width:"200px"},200),
+                $("#searchform input").css('display','block');
+            $(document).one("click", function() {
+                $("#searchform").animate({width:"0"},100),
+                    $("#searchform input").hide();
+            });
+            e.stopPropagation();
+        });
+        $('#searchform').on("click", function(e) {e.stopPropagation();})
+    }
 
 	var donate = function() {
 		var v3 = {
@@ -266,7 +274,7 @@
 			});
 		});
 	}
-	
+
 	$(function() {
 		topStart();
 		mainMenu();
@@ -281,6 +289,7 @@
 		contentWayPoint();
 		showPhotos();
 		donate();
+        search();
 		//copyright();
 	});
 }());
