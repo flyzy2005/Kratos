@@ -686,9 +686,10 @@ table,table tbody tr th {
 	z-index: 2;
 	font-size: 28px;
 	text-transform: none;
-	margin-top: 37px;
 	font-weight: 300;
-	float: left
+	float: left;
+	line-height: 55px;
+	margin: 0;
 }
 
 #kratos-logo-img {
@@ -736,7 +737,6 @@ table,table tbody tr th {
 	z-index: 2;
 	display: block;
 	float: right;
-	margin-top: 22px
 }
 
 #kratos-menu-wrap .sf-menu a {
@@ -3621,6 +3621,13 @@ img.size-smiley {
 .gotop-box a:active,.gotop-box a:focus,.gotop-box a:hover {
 	outline:0;
 	text-decoration:none
+}
+
+.header-container {
+	z-index: 1070;
+	position: fixed;
+	top: 0;
+	width: 100%;
 }
 
 @media (min-width:768px) {

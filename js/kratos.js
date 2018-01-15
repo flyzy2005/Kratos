@@ -210,8 +210,10 @@
             var $win = $(window);
             if ($win.scrollTop() > 200) {
                 $('.gotop-box').addClass('active');
+                $('.header-container').css("background", '#000');
             } else {
                 $('.gotop-box').removeClass('active');
+                $('.header-container').css("background", '');
             }
         });
 	}

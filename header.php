@@ -38,28 +38,31 @@
     <div id="kratos-page">
         <div id="kratos-header">
             <header id="kratos-header-section">
-                <div class="container">
-                    <div class="nav-header">
-						<?php if ( has_nav_menu( 'header_menu' ) ) : ?>
-                            <a href="#" class="js-kratos-nav-toggle kratos-nav-toggle"><i></i></a>
-						<?php endif; ?>
-						<?php $site_logo = kratos_option( 'site_logo' ); ?>
-						<?php if ( ! empty( $site_logo ) ) { ?>
-                            <a href="<?php echo get_option( 'home' ); ?>">
-                                <h1 id="kratos-logo-img"><img src="<?php echo $site_logo; ?>"></h1>
-                            </a>
-						<?php } else { ?>
-                            <h2 id="kratos-logo"><a
-                                        href="<?php echo get_option( 'home' ); ?>"><?php bloginfo( 'name' ); ?></a></h2>
-						<?php } ?>
-						<?php $defaults = array(
-							'theme_location' => 'header_menu',
-							'container'      => 'nav',
-							'container_id'   => 'kratos-menu-wrap',
-							'menu_class'     => 'sf-menu',
-							'menu_id'        => 'kratos-primary-menu',
-						); ?>
-						<?php wp_nav_menu( $defaults ); ?>
+                <div class="header-container">
+                    <div class="container">
+                        <div class="nav-header">
+							<?php if ( has_nav_menu( 'header_menu' ) ) : ?>
+                                <a href="#" class="js-kratos-nav-toggle kratos-nav-toggle" style="margin: 0; line-height: 48px"><i></i></a>
+							<?php endif; ?>
+							<?php $site_logo = kratos_option( 'site_logo' ); ?>
+							<?php if ( ! empty( $site_logo ) ) { ?>
+                                <a href="<?php echo get_option( 'home' ); ?>">
+                                    <h1 id="kratos-logo-img"><img src="<?php echo $site_logo; ?>"></h1>
+                                </a>
+							<?php } else { ?>
+                                <h2 id="kratos-logo"><a
+                                            href="<?php echo get_option( 'home' ); ?>"><?php bloginfo( 'name' ); ?></a>
+                                </h2>
+							<?php } ?>
+							<?php $defaults = array(
+								'theme_location' => 'header_menu',
+								'container'      => 'nav',
+								'container_id'   => 'kratos-menu-wrap',
+								'menu_class'     => 'sf-menu',
+								'menu_id'        => 'kratos-primary-menu',
+							); ?>
+							<?php wp_nav_menu( $defaults ); ?>
+                        </div>
                     </div>
                 </div>
             </header>
