@@ -292,6 +292,7 @@
 		showPhotos();
 		donate();
         search();
+        sidebaraffix();
 		//copyright();
 	});
 }());
