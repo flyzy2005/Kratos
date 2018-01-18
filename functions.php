@@ -1352,6 +1352,7 @@ function publish_bd_submit( $post_ID ) {
 		//curl_exec( $ch );
 	}
 }
+
 add_filter('the_content','the_content_nofollow',999);
 function the_content_nofollow($content) {
 	preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$content,$matches);
@@ -1359,6 +1360,19 @@ function the_content_nofollow($content) {
 		foreach($matches[2] as $val){
 			if(strpos($val,'://')!==false && strpos($val,home_url())===false && !preg_match('/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i',$val)){
 				$content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/go.php?url=$val\" ",$content);
+			}
+		}
+	}
+	return $content;
+}
+
+add_filter('the_content','the_content_vultr',998);
+function the_content_vultr($content) {
+	preg_match_all('/<a(.*?)href="(.*?)"(.*?)>/',$content,$matches);
+	if($matches){
+		foreach($matches[2] as $val){
+			if(strpos($val,'://')!==false && strpos($val,'ref=7164730')!==false) {
+				$content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/go.php?vultr\"",$content);
 			}
 		}
 	}
