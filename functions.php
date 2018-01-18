@@ -19,23 +19,12 @@ $kratos_update_checker = new ThemeUpdateChecker(
 	'https://raw.githubusercontent.com/Vtrois/Kratos/master/inc/upgrade.json'
 );
 
-/**
- * Replace Gravatar server
- */
-function kratos_get_avatar( $avatar ) {
-	$avatar = str_replace( array(
-		'www.gravatar.com',
-		'0.gravatar.com',
-		'1.gravatar.com',
-		'2.gravatar.com',
-		'3.gravatar.com',
-		'secure.gravatar.com'
-	), 'cn.gravatar.com', $avatar );
-
+/*替换v2ex的Gravatar CDN*/
+function getV2exAvatar($avatar) {
+	$avatar = str_replace(array("http://www.gravatar.com/avatar","http://0.gravatar.com/avatar","http://1.gravatar.com/avatar","http://2.gravatar.com/avatar","https://secure.gravatar.com/avatar"),"https://cdn.v2ex.com/gravatar",$avatar);
 	return $avatar;
 }
-
-add_filter( 'get_avatar', 'kratos_get_avatar' );
+add_filter('get_avatar', 'getV2exAvatar');
 
 /**
  * Disable automatic formatting
