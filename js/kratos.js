@@ -81,6 +81,20 @@
 				}
 			}
 		});
+
+        $('#offcanvas-menu ul li a.sf-with-ul').parent().prepend('<i class="fa fa-sort-desc" aria-hidden="true"></i>');
+		$('i.fa.fa-sort-desc').click(function () {
+			if(($(this).parent("li").attr("class")==null)){
+                $(this).siblings('ul').slideDown();
+                $(this).parent("li").addClass("open");
+			}else if($(this).parent("li").attr("class").indexOf("open")>=0){
+                $(this).siblings('ul').slideUp();
+                $(this).parent("li").removeClass("open");
+			}else{
+                $(this).siblings('ul').slideDown();
+                $(this).parent("li").addClass("open");
+			}
+        });
 	}
 
 	var sidebaraffix = function() {
@@ -289,7 +303,7 @@
 		weixinpic();
 		mobileMenuOutsideClick();
 		contentWayPoint();
-		showPhotos();
+		//showPhotos();
 		donate();
         search();
         sidebaraffix();
