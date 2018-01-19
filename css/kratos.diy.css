@@ -1,1 +1,126 @@
 /* Kratos CSS Plus */
+.col-12 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.col-lg-4 {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-4 {
+        -ms-flex: 0 0 33.333333%;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+.float-right {
+    float: right !important;
+}
+
+.mb-2, .my-2 {
+    margin-bottom: .5rem !important;
+}
+
+.mt-2, .my-2 {
+    margin-top: .5rem !important;
+}
+
+#guest-apply {
+    margin: 5px
+}
+
+.ravenclaw-links .card:hover {
+    -webkit-box-shadow: 0 0.9375rem 0.625rem -0.625rem rgba(110, 110, 110, 0.5), 0 0.0625rem 0.25rem rgba(110, 110, 110, 0.3), 0 0 3.75rem rgba(110, 110, 110, 0.1) inset;
+    -moz-box-shadow: 0 0.9375rem 0.625rem -0.625rem rgba(110, 110, 110, 0.5), 0 0.0625rem 0.25rem rgba(110, 110, 110, 0.3), 0 0 2.5rem rgba(110, 110, 110, 0.1) inset;
+    box-shadow: 0 0.9375rem 0.625rem -0.625rem rgba(110, 110, 110, 0.5), 0 0.0625rem 0.25rem rgba(110, 110, 110, 0.3), 0 0 2.5rem rgba(110, 110, 110, 0.1) inset;
+}
+
+.ravenclaw-links .main div:nth-child(5n) .card-header {
+    background-color: #e67e22
+}
+
+.ravenclaw-links .main div:nth-child(5n+1) .card-header {
+    background-color: #3498db
+}
+
+.ravenclaw-links .main div:nth-child(5n+2) .card-header {
+    background-color: #dc3545
+}
+
+.ravenclaw-links .main div:nth-child(5n+3) .card-header {
+    background-color: #1abc9c
+}
+
+.ravenclaw-links .main div:nth-child(5n+4) .card-header {
+    background-color: #f1c40f
+}
+
+.ravenclaw-links .main div:nth-child(5n+5) .card-header {
+    background-color: #9b59b6
+}
+
+.ravenclaw-links .card-header {
+    border-bottom: none;
+    padding: 1.3rem 1.25rem 0.8rem;
+}
+
+.ravenclaw-links .card-title {
+    margin-bottom: 0;
+    font-size: 0.9375rem;
+    color: #fff;
+}
+
+.ravenclaw-links .card-link {
+    margin-bottom: 0;
+    font-size: 0.8125rem;
+    color: #fff;
+}
+
+.ravenclaw-links .card-body {
+    background-color: #f5f5f5;
+    padding: 1.25rem;
+}
+
+.ravenclaw-links .card-text {
+    -webkit-line-clamp: 1;
+}
+
+.ravenclaw-links .card-footer {
+    padding: .45rem 1.25rem;
+    border-top: 0.0625rem solid #eee;
+    background-color: #f5f5f5;
+}
+
+.ravenclaw-links .card-footer img {
+    width: 1.0rem;
+    height: 1.0rem;
+    margin-top: 0.3125rem
+}
+
+.ravenclaw-links .text-muted {
+    font-size: 0.875rem;
+}
+
+.ravenclaw-links .text-muted i {
+    font-size: 0.9375rem;
+}
+
+.ravenclaw-links .text-muted .v3-fenlei {
+    margin-right: 0.25rem;
+}
+
+.ravenclaw-links .exchange {
+    border-top: solid 0.0625rem #eee;
+}

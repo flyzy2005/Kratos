@@ -41,14 +41,16 @@ get_header( 'banner' ); ?>
 								</span>
                                 </div>
                             </header>
+                            </header>
                             <div class="kratos-post-content">
 								<?php if ( kratos_option( 'ad_show_1' ) ): ?>
-                                    <a href="<?php echo kratos_option( 'ad_link_1' ); ?>"><img
+                                    <a href="<?php echo kratos_option( 'ad_link_1' ); ?>" target="_blank"
+                                       rel="nofollow"><img
                                                 src="<?php echo kratos_option( 'ad_img_1' ) ?>"></a>
 								<?php endif ?>
 								<?php the_content(); ?>
 								<?php if ( kratos_option( 'ad_show_2' ) ): ?>
-                                    <a href="<?php echo kratos_option( 'ad_link_2' ); ?>"><img
+                                    <a href="<?php echo kratos_option( 'ad_link_2' ); ?>" target="_blank" rel="nofollow"><img
                                                 src="<?php echo kratos_option( 'ad_img_2' ) ?>"></a>
 								<?php endif ?>
                             </div>
