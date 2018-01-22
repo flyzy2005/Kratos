@@ -1378,3 +1378,207 @@ function the_content_vultr($content) {
 	}
 	return $content;
 }
+
+/* 腾讯云CDN 文章首页自动更新缓存 */
+/* 需要填写你的密钥，访问 https://console.qcloud.com/capi 获取 SecretId 及 $secretKey */
+$secretKey = 'GH4cvzoOjpgHchX9XgbHiura4KKHyRdZ';
+$secretId  = 'AKIDqVvnRsa1jFXaOx6PHtJVSAdsseBUdOyK';
+//$secretKey = 'aaa';
+//$secretId  = 'aa';
+
+//更新或发布文章清理本文和首页CDN缓存
+add_action('publish_post', 'clean_by_publish', 0);
+add_action('publish_post', 'clean_home_pages_by_publish', 0);
+
+//提交评论更新本文CDN缓存
+add_action('comment_post', 'clean_by_comments',0);
+
+//评论被审核更新本文CDN缓存
+add_action('comment_unapproved_to_approved', 'clean_by_comments_approved',0);
+
+//发布文章更新文章CDN缓存函数
+function clean_by_publish($post_ID){
+	global $secretKey,$secretId;
+	$url = get_permalink($post_ID);
+	$action='RefreshCdnUrl';
+	/*要清理的页面，默认包含首页和文章页面，需要清理其他页面请自行发挥*/
+	$PRIVATE_PARAMS = array(
+		'urls.0' => $url
+	);
+	$HttpUrl="cdn.api.qcloud.com";
+	/*除非有特殊说明，如MultipartUploadVodFile，其它接口都支持GET及POST*/
+	$HttpMethod="POST";
+	/*是否https协议，大部分接口都必须为https，只有少部分接口除外（如MultipartUploadVodFile）*/
+	$isHttps =true;
+	/*下面这五个参数为所有接口的 公共参数；对于某些接口没有地域概念，则不用传递Region（如DescribeDeals）*/
+	$COMMON_PARAMS = array(
+		'Nonce' => rand(),
+		'Timestamp' =>time(NULL),
+		'Action' =>$action,
+		'SecretId' => $secretId,
+	);
+	/***********************************************************************************/
+	CreateRequest($HttpUrl,$HttpMethod,$COMMON_PARAMS,$secretKey, $PRIVATE_PARAMS, $isHttps);
+}
+
+//发布文章文章整个首页（home_url()/page/n）
+function clean_home_pages_by_publish() {
+	global $secretKey,$secretId;
+	global $post;
+	$status = $post->post_status;
+	//只有发新文章再更新首页
+	if ( $status != 'publish' ) {
+		$action = 'RefreshCdnDir';
+		/*要清理的页面，默认包含首页和文章页面，需要清理其他页面请自行发挥*/
+		$PRIVATE_PARAMS = array(
+			'dirs.0' => home_url()."/page/"
+		);
+		$HttpUrl        = "cdn.api.qcloud.com";
+		/*除非有特殊说明，如MultipartUploadVodFile，其它接口都支持GET及POST*/
+		$HttpMethod = "POST";
+		/*是否https协议，大部分接口都必须为https，只有少部分接口除外（如MultipartUploadVodFile）*/
+		$isHttps = true;
+		/*下面这五个参数为所有接口的 公共参数；对于某些接口没有地域概念，则不用传递Region（如DescribeDeals）*/
+		$COMMON_PARAMS = array(
+			'Nonce'     => rand(),
+			'Timestamp' => time( null ),
+			'Action'    => $action,
+			'SecretId'  => $secretId,
+		);
+		/***********************************************************************************/
+		CreateRequest( $HttpUrl, $HttpMethod, $COMMON_PARAMS, $secretKey, $PRIVATE_PARAMS, $isHttps );
+	}
+}
+//提交评论清理文章以及首页缓存（首页需要显示当前评论，故刷新）
+function clean_by_comments($comment_id)
+{
+	global $secretKey,$secretId;
+	$comment = get_comment($comment_id);
+	$url = get_permalink($comment->comment_post_ID);
+	$action='RefreshCdnUrl';
+	/*参数*/
+	$PRIVATE_PARAMS = array(
+		'urls.0' => $url,
+		'urls.1' => home_url()
+	);
+	$HttpUrl="cdn.api.qcloud.com";
+	/*除非有特殊说明，如MultipartUploadVodFile，其它接口都支持GET及POST*/
+	$HttpMethod="POST";
+	/*是否https协议，大部分接口都必须为https，只有少部分接口除外（如MultipartUploadVodFile）*/
+	$isHttps =true;
+	/*下面这五个参数为所有接口的 公共参数；对于某些接口没有地域概念，则不用传递Region（如DescribeDeals）*/
+	$COMMON_PARAMS = array(
+		'Nonce' => rand(),
+		'Timestamp' =>time(NULL),
+		'Action' =>$action,
+		'SecretId' => $secretId,
+	);
+	/***********************************************************************************/
+	CreateRequest($HttpUrl,$HttpMethod,$COMMON_PARAMS,$secretKey, $PRIVATE_PARAMS, $isHttps);
+}
+
+//评论被审核清理文章以及首页缓存
+function clean_by_comments_approved($comment)
+{
+	global $secretKey,$secretId;
+	$url = get_permalink($comment->comment_post_ID);
+	$action='RefreshCdnUrl';
+	/*参数*/
+	$PRIVATE_PARAMS = array(
+		'urls.0' => $url,
+		'urls.1' => home_url()
+	);
+	$HttpUrl="cdn.api.qcloud.com";
+	/*除非有特殊说明，如MultipartUploadVodFile，其它接口都支持GET及POST*/
+	$HttpMethod="POST";
+	/*是否https协议，大部分接口都必须为https，只有少部分接口除外（如MultipartUploadVodFile）*/
+	$isHttps =true;
+	/*下面这五个参数为所有接口的 公共参数；对于某些接口没有地域概念，则不用传递Region（如DescribeDeals）*/
+	$COMMON_PARAMS = array(
+		'Nonce' => rand(),
+		'Timestamp' =>time(NULL),
+		'Action' =>$action,
+		'SecretId' => $secretId,
+	);
+	/***********************************************************************************/
+	CreateRequest($HttpUrl,$HttpMethod,$COMMON_PARAMS,$secretKey, $PRIVATE_PARAMS, $isHttps);
+}
+
+function CreateRequest($HttpUrl,$HttpMethod,$COMMON_PARAMS,$secretKey, $PRIVATE_PARAMS, $isHttps)
+{
+	$FullHttpUrl = $HttpUrl."/v2/index.php";
+	/***************对请求参数 按参数名 做字典序升序排列，注意此排序区分大小写*************/
+	$ReqParaArray = array_merge($COMMON_PARAMS, $PRIVATE_PARAMS);
+	ksort($ReqParaArray);
+	/**********************************生成签名原文**********************************
+	 * 将 请求方法, URI地址,及排序好的请求参数  按照下面格式  拼接在一起, 生成签名原文，此请求中的原文为
+	 * GETcvm.api.qcloud.com/v2/index.php?Action=DescribeInstances&Nonce=345122&Region=gz
+	 * &SecretId=AKIDz8krbsJ5yKBZQ    ·1pn74WFkmLPx3gnPhESA&Timestamp=1408704141
+	 * &instanceIds.0=qcvm12345&instanceIds.1=qcvm56789
+	 * ****************************************************************************/
+	$SigTxt = $HttpMethod.$FullHttpUrl."?";
+	$isFirst = true;
+	foreach ($ReqParaArray as $key => $value)
+	{
+		if (!$isFirst)
+		{
+			$SigTxt = $SigTxt."&";
+		}
+		$isFirst= false;
+		/*拼接签名原文时，如果参数名称中携带_，需要替换成.*/
+		if(strpos($key, '_'))
+		{
+			$key = str_replace('_', '.', $key);
+		}
+		$SigTxt=$SigTxt.$key."=".$value;
+	}
+	/*********************根据签名原文字符串 $SigTxt，生成签名 Signature******************/
+	$Signature = base64_encode(hash_hmac('sha1', $SigTxt, $secretKey, true));
+	/***************拼接请求串,对于请求参数及签名，需要进行urlencode编码********************/
+	$Req = "Signature=".urlencode($Signature);
+	foreach ($ReqParaArray as $key => $value)
+	{
+		$Req=$Req."&".$key."=".urlencode($value);
+	}
+	/*********************************发送请求********************************/
+	if($HttpMethod === 'GET')
+	{
+		if($isHttps === true)
+		{
+			$Req="https://".$FullHttpUrl."?".$Req;
+		}
+		else
+		{
+			$Req="http://".$FullHttpUrl."?".$Req;
+		}
+		$Rsp = file_get_contents($Req);
+	}
+	else
+	{
+		if($isHttps === true)
+		{
+			$Rsp= SendPost("https://".$FullHttpUrl,$Req,$isHttps);
+		}
+		else
+		{
+			$Rsp= SendPost("http://".$FullHttpUrl,$Req,$isHttps);
+		}
+	}
+	//var_export(json_decode($Rsp,true));
+	return json_decode($Rsp,true);
+}
+function SendPost($FullHttpUrl, $Req, $isHttps)
+{
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_POST, 1);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $Req);
+	curl_setopt($ch, CURLOPT_URL, $FullHttpUrl);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($ch, CURLOPT_TIMEOUT, 1 );
+	if ($isHttps === true) {
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,  false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,  false);
+	}
+	$result = curl_exec($ch);
+	return $result;
+}
