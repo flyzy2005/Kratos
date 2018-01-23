@@ -1381,10 +1381,8 @@ function the_content_vultr($content) {
 
 /* 腾讯云CDN 文章首页自动更新缓存 */
 /* 需要填写你的密钥，访问 https://console.qcloud.com/capi 获取 SecretId 及 $secretKey */
-$secretKey = 'GH4cvzoOjpgHchX9XgbHiura4KKHyRdZ';
-$secretId  = 'AKIDqVvnRsa1jFXaOx6PHtJVSAdsseBUdOyK';
-//$secretKey = 'aaa';
-//$secretId  = 'aa';
+$secretKey = 'aaa';
+$secretId  = 'aa';
 
 //更新或发布文章清理本文和首页CDN缓存
 add_action('publish_post', 'clean_by_publish', 0);
@@ -1401,10 +1399,19 @@ function clean_by_publish($post_ID){
 	global $secretKey,$secretId;
 	$url = get_permalink($post_ID);
 	$action='RefreshCdnUrl';
-	/*要清理的页面，默认包含首页和文章页面，需要清理其他页面请自行发挥*/
-	$PRIVATE_PARAMS = array(
-		'urls.0' => $url
-	);
+	global $post;
+	$status = $post->post_status;
+	/*要清理的页面，发布文章更新首页&文章页，更新则只更新文章页*/
+	if ( $status != 'publish' ) {
+		$PRIVATE_PARAMS = array(
+			'urls.0' => $url,
+			'urls.1' => home_url()
+		);
+	} else {
+		$PRIVATE_PARAMS = array(
+			'urls.0' => $url
+		);
+	}
 	$HttpUrl="cdn.api.qcloud.com";
 	/*除非有特殊说明，如MultipartUploadVodFile，其它接口都支持GET及POST*/
 	$HttpMethod="POST";
