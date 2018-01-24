@@ -1352,6 +1352,28 @@ function publish_bd_submit( $post_ID ) {
 		//curl_exec( $ch );
 	}
 }
+add_action( 'publish_post', 'publish_bd_xiongzhang_submit' );
+function publish_bd_xiongzhang_submit( $post_ID ) {
+	global $post;
+	if ( empty( $post_ID ) ) {
+		return;
+	}
+	$api    = 'http://data.zz.baidu.com/urls?';
+	$status = $post->post_status;
+	if ( $status != '' && $status != 'publish' ) {
+		$url =get_permalink($post_ID);
+		$ch      = curl_init();
+		$options = array(
+			CURLOPT_URL            => $api,
+			CURLOPT_POST           => true,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_POSTFIELDS     => $url,
+			CURLOPT_HTTPHEADER     => array( 'Content-Type: text/plain' )
+		);
+		curl_setopt_array( $ch, $options );
+		curl_exec( $ch );
+	}
+}
 
 add_filter('the_content','the_content_nofollow',999);
 function the_content_nofollow($content) {
