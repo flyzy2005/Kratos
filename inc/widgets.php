@@ -50,7 +50,7 @@ class kratos_widget_ad extends WP_Widget {
             <h4 class="widget-title"><?php echo $title; ?></h4>
             <?php }?>
             <?php if(!empty($imgurl)) {?>
-            <a href="<?php echo $aurl; ?>" target="_blank">
+            <a href="<?php echo $aurl; ?>" <?php if (!stristr($aurl, home_url())) echo 'rel="nofollow"'?> target="_blank">
                 <img class="carousel-inner img-responsive img-rounded" src="<?php echo $imgurl; ?>" />
             </a>
             <?php }?>
@@ -117,13 +117,13 @@ class kratos_widget_about extends WP_Widget {
                 <?php if(!empty($imgurl)) {?>
                 <div class="photo-wrapper clearfix">
                     <div class="photo-wrapper-tip text-center">
-                        <a href="<?php echo get_option('home'); ?>/wp-login.php"><img class="about-photo" src="<?php echo $imgurl; ?>" /></a>
+                        <a href="<?php echo get_option('home'); ?>"><img class="about-photo" src="<?php echo $imgurl; ?>" /></a>
                     </div>
                 </div>
                 <?php }else{?>
                 <div class="photo-wrapper clearfix">
                     <div class="photo-wrapper-tip text-center">
-                        <a href="<?php echo get_option('home'); ?>/wp-login.php"><img class="about-photo" src="<?php echo bloginfo('template_url'); ?>/images/avatar.png" /></a>
+                        <a href="<?php echo get_option('home'); ?>"><img class="about-photo" src="<?php echo bloginfo('template_url'); ?>/images/avatar.png" /></a>
                     </div>
                 </div>
                 <?php }?>
