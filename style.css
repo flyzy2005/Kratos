@@ -385,12 +385,12 @@ table,table tbody tr th {
 }
 
 .kratos-cover.kratos-hero-2,.kratos-start.kratos-hero-2 {
-	height: 300px
+	height: 120px
 }
 
 @media screen and (max-width:768px) {
 	.kratos-cover.kratos-hero-2,.kratos-start.kratos-hero-2 {
-		height: 250px
+		height: 120px
 	}
 }
 
@@ -439,12 +439,12 @@ table,table tbody tr th {
 }
 
 .kratos-cover.kratos-cover_2 {
-	height: 300px
+	height: 120px
 }
 
 @media screen and (max-width:768px) {
 	.kratos-cover.kratos-cover_2 {
-		height: 250px;
+		height: 120px;
 		padding: 3em 0
 	}
 }

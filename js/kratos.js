@@ -222,7 +222,7 @@
 
         $(window).scroll(function(){
             var $win = $(window);
-            if ($win.scrollTop() > 200) {
+            if ($win.scrollTop() > 50) {
                 $('.gotop-box').addClass('active');
                 $('.header-container').css("background", '#000');
             } else {
