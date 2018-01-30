@@ -30,7 +30,7 @@
                     </p>
                     <p>Copyright <?php echo date( 'Y' ); ?> <a
                                 href="<?php echo get_option( 'home' ); ?>"><?php bloginfo( 'name' ); ?></a>. Based on <a
-                                href="https://github.com/Vtrois/Kratos">Kratos.</a></br><span
+                                href="https://github.com/Flyzy2005/Kratos">Kratos.</a></br><span
                                 id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
                         <script>var now = new Date();
 
