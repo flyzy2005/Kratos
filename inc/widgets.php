@@ -14,7 +14,7 @@ add_action( 'widgets_init', 'kratos_widgets_init' );
 
 function remove_default_widget() {
  //    unregister_widget('WP_Widget_Recent_Posts');//移除近期文章
- //    unregister_widget('WP_Widget_Recent_Comments');//移除近期评论
+     unregister_widget('WP_Widget_Recent_Comments');//移除近期评论
        unregister_widget('WP_Widget_Meta');//移除站点功能
        unregister_widget('WP_Widget_Tag_Cloud');//移除标签云
  //    unregister_widget('WP_Widget_Text');//移除文本框
@@ -27,6 +27,45 @@ function remove_default_widget() {
        unregister_widget('WP_Widget_Search');//移除搜索
 }
 add_action( 'widgets_init', 'remove_default_widget' );
+class kratos_widget_baidu_ad extends WP_Widget {
+
+	function __construct() {
+		$widget_ops = array(
+			'classname' => 'kratos_widget_baidu_ad',
+			'name'        => 'Kratos - 百度广告位',
+			'description' => 'Kratos主题特色组件 - 百度广告位'
+		);
+		parent::__construct( false, false, $widget_ops );
+	}
+
+	function widget( $args, $instance ) {
+		extract( $args );
+		$script = $instance['script'] ? $instance['script'] : '';
+		echo $before_widget;
+		?>
+		<?php if(!empty($script)) {?>
+            <?php echo $script; ?>
+		<?php }?>
+		<?php
+		echo $after_widget;
+	}
+
+	function update( $new_instance, $old_instance ) {
+		return $new_instance;
+	}
+
+	function form( $instance ) {
+		@$script = esc_attr( $instance['script'] );
+		?>
+        <p>
+            <label for="<?php echo $this->get_field_id( 'script' ); ?>">
+                百度广告代码：
+                <input class="widefat" id="<?php echo $this->get_field_id( 'script' ); ?>" name="<?php echo $this->get_field_name( 'script' ); ?>" type="text" value="<?php echo $script; ?>" />
+            </label>
+        </p>
+		<?php
+	}
+}
 
 class kratos_widget_ad extends WP_Widget {
 
@@ -379,12 +418,88 @@ class kratos_widget_posts extends WP_Widget{
     }
 }
 
+class kratos_widget_comments extends WP_Widget{
+
+	function __construct(){
+		$widget_ops = array(
+
+			'classname' => 'kratos_widget_comments',
+			'name'        => 'Kratos - 近期评论',
+			'description'=>'Kratos主题特色组件 - 近期评论'
+		);
+		parent::__construct( false, false, $widget_ops );
+	}
+
+	function widget($args, $instance){
+		extract($args);
+		$result = '';
+		$number = (!empty($instance['number'])) ? intval($instance['number']) : 6;
+
+		$comments = get_comments( apply_filters( 'widget_comments_args', array(
+			'number'      => $number,
+			'status'      => 'approve',
+			'post_status' => 'publish'
+		), $instance ) );
+		?>
+        <aside class="widget_kratos_commentstab">
+            <h4 style="margin-left: 20px;" class="widget-title">近期评论</h4>
+            <div class="recent_comments">
+                <?php
+                    if ( is_array($comments) && $comments) {
+                        foreach ( (array) $comments as $comment ) {
+	                        ?>
+                            <a href="<?php echo get_comment_link( $comment ) ?>" title="发表在：<?php echo get_the_title( $comment->comment_post_ID )?>">
+                                <div class="meta clearfix">
+                                    <div class="avatar float-left">
+                                        <img alt style="border-radius: 50%;" src="<?php if ( $comment -> user_id == "1" ) {
+                                            echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/flyzy-avatar.png";
+                                        } else {
+	                                        echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/default-avatar.png";
+                                        } ?>">
+                                    </div>
+                                    <div class="profile d-block">
+                                        <span class="date">发布于<?php echo smk_get_comment_time($comment->comment_ID)?><?php echo "（".get_comment_date('n月j日', $comment->comment_ID)."）"?></span>
+                                        <span class="message d-block"><?php echo get_comment_excerpt($comment) ?></span>
+                                    </div>
+                                </div>
+                            </a>
+	                        <?php
+                        }}?>
+            </div>
+        </aside>
+		<?php
+	}
+	function update($new_instance, $old_instance){
+		if (!isset($new_instance['submit'])) {
+			return false;
+		}
+		$instance = $old_instance;
+		$instance['number'] = intval($new_instance['number']);
+		return $instance;
+	}
+
+	function form($instance){
+		global $wpdb;
+		$instance = wp_parse_args((array) $instance, array('number'=>'5'));
+		$number = intval($instance['number']);
+		?>
+
+        <p>
+            <label for='<?php echo $this->get_field_id("number");?>'>每项展示数量：<input type='text' name='<?php echo $this->get_field_name("number");?>' id='<?php echo $this->get_field_id("number");?>' value="<?php echo $number;?>"/></label>
+        </p>
+        <input type="hidden" id="<?php echo $this->get_field_id('submit'); ?>" name="<?php echo $this->get_field_name('submit'); ?>" value="1" />
+		<?php
+	}
+}
+
 function kratos_register_widgets(){
     register_widget('kratos_widget_ad'); 
     register_widget('kratos_widget_about'); 
     register_widget('kratos_widget_tags'); 
     register_widget('kratos_widget_search'); 
-    register_widget('kratos_widget_posts'); 
+    register_widget('kratos_widget_posts');
+	register_widget('kratos_widget_comments');
+	register_widget('kratos_widget_baidu_ad');
 }
 add_action('widgets_init','kratos_register_widgets');
 ?>

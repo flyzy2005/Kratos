@@ -1611,3 +1611,12 @@ function SendPost($FullHttpUrl, $Req, $isHttps)
 	$result = curl_exec($ch);
 	return $result;
 }
+function smk_get_comment_time( $comment_id = 0 ){
+	return sprintf(
+		_x( '%s之前', 'Human-readable time', 'text-domain' ),
+		human_time_diff(
+			get_comment_date( 'U', $comment_id ),
+			current_time( 'timestamp')
+		)
+	);
+}

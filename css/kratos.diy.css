@@ -1,4 +1,39 @@
 /* Kratos CSS Plus */
+.float-left {
+    float: left!important;
+}
+.d-block {
+    display: block!important;
+}
+.widget_kratos_commentstab {
+    margin: 0 0 25px;
+    padding: 30px 10px 10px 10px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    border-radius: 0;
+}
+.recent_comments .profile {
+    padding-top: .3125rem;
+    font-size: .85rem;
+}
+.recent_comments .date {
+    color: #777;
+    font-size: .75rem;
+}
+.recent_comments .message {
+    overflow: hidden;
+    color: #394a58;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .87rem;
+    word-break: keep-all;
+}
+.recent_comments a {
+    display: block;
+    padding: .8125rem .875rem;
+    border-bottom: .0625rem solid #eee;
+    font-size: .8125rem;
+}
 .col-12 {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
