@@ -1620,3 +1620,29 @@ function smk_get_comment_time( $comment_id = 0 ){
 		)
 	);
 }
+
+//评论添加验证码
+function spam_protection_math(){
+	$num1=rand(0,9);
+	$num2=rand(0,9);
+	echo "<label for=\"math\">请输入 <i>$num1 + $num2 = ?</i> 的计算结果：</label>\n";
+	echo "<input type=\"text\" name=\"sum\" class=\"text\" value=\"\" size=\"25\" tabindex=\"4\">\n";
+	echo "<input type=\"hidden\" name=\"num1\" value=\"$num1\">\n";
+	echo "<input type=\"hidden\" name=\"num2\" value=\"$num2\">";
+}
+function spam_protection_pre($commentdata){
+	$sum=$_POST['sum'];
+	if ($sum == null) {
+        wp_die('对不起: 请输入验证码。<a href="javascript:history.back(-1)">返回上一页</a>', '评论失败');
+    } else {
+        switch ($sum) {
+            case $_POST['num1'] + $_POST['num2']:
+                break;
+            default:
+                wp_die('对不起: 验证码错误，请<a href="javascript:history.back(-1)">返回</a>重试。', '评论失败');
+        }
+    }
+	return $commentdata;
+}
+add_filter('preprocess_comment','spam_protection_pre');
+

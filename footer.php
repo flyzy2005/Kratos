@@ -9,12 +9,12 @@
     <div id="footer">
         <div class="gotop-box"><a href="#" class="gotop-btn"><i class="fa fa-chevron-up"></i></a></div>
         <div class="search-box"><i class="fa fa-search"></i>
-            <form class="search-form" role="search" method="get" id="searchform" action="http://192.168.1.111:8080/"
+            <form class="search-form" role="search" method="get" id="searchform" action="http://localhost:8080/"
                   style="width: 0;"><input type="text" name="s" id="search" placeholder="搜点什么呢？" style="display: none;">
             </form>
         </div>
         <div class="weixin-box"><a class="weixin-btn"><i class="fa fa-wechat"></i>
-                <div id="weixin-pic"><img src="http://192.168.1.111:8080/wp-content/uploads/2017/12/flyzy.jpg"></div>
+                <div id="weixin-pic"><img src="http://localhost:8080/wp-content/uploads/2017/12/flyzy.jpg"></div>
             </a></div>
         <div class="container">
             <div class="row">

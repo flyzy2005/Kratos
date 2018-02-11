@@ -452,9 +452,9 @@ class kratos_widget_comments extends WP_Widget{
                                 <div class="meta clearfix">
                                     <div class="avatar float-left">
                                         <img alt style="border-radius: 50%;" src="<?php if ( $comment -> user_id == "1" ) {
-                                            echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/flyzy-avatar.png";
+                                            echo "http://localhost:8080/wp-content/uploads/2018/01/flyzy-avatar.jpg";
                                         } else {
-	                                        echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/default-avatar.png";
+	                                        echo "http://localhost:8080/wp-content/uploads/2018/01/default-avatar.jpg";
                                         } ?>">
                                     </div>
                                     <div class="profile d-block">
