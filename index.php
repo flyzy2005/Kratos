@@ -22,6 +22,7 @@ if ( is_category() ) {
 				if ( is_home() ) {
 					kratos_banner();
 				} elseif ( is_category() ) {
+					kratos_banner();
 					global $query_string;
 					query_posts( $query_string . "&order=ASC" );
 					?>

@@ -1004,53 +1004,57 @@ function kratos_get_post_views( $before = '', $after = '', $echo = 1 ) {
  * Banner
  */
 function kratos_banner() {
-	if ( ! $output = get_option( 'kratos_banners' ) ) {
-		$output           = '';
-		$kratos_banner_on = kratos_option( "kratos_banner" ) ? kratos_option( "kratos_banner" ) : 0;
-		if ( $kratos_banner_on ) {
-			for ( $i = 1; $i < 6; $i ++ ) {
-				$kratos_banner{$i}     = kratos_option( "kratos_banner{$i}" ) ? kratos_option( "kratos_banner{$i}" ) : "";
-				$kratos_banner_url{$i} = kratos_option( "kratos_banner_url{$i}" ) ? kratos_option( "kratos_banner_url{$i}" ) : "";
-				if ( $kratos_banner{$i} ) {
-					$banners[]     = $kratos_banner{$i};
-					$banners_url[] = $kratos_banner_url{$i};
-				}
-			}
-			$count  = count( $banners );
-			$output .= '<div id="slide" class="carousel slide" data-ride="carousel">';
-			$output .= '<ol class="carousel-indicators">';
-			for ( $i = 0; $i < $count; $i ++ ) {
-				$output .= '<li data-target="#slide" data-slide-to="' . $i . '"';
-				if ( $i == 0 ) {
-					$output .= 'class="active"';
-				}
-
-				$output .= '></li>';
-			};
-			$output .= '</ol>';
-			$output .= '<div class="carousel-inner" role="listbox">';
-			for ( $i = 0; $i < $count; $i ++ ) {
-				$output .= '<div class="item';
-				if ( $i == 0 ) {
-					$output .= ' active';
-				}
-
-				$output .= '">';
-				if ( ! empty( $banners_url[ $i ] ) ) {
-					$output .= '<a href="' . $banners_url[ $i ] . '"><img src="' . $banners[ $i ] . '"/></a>';
-				} else {
-					$output .= '<img src="' . $banners[ $i ] . '"/>';
-				}
-				$output .= "</div>";
-			};
-			$output .= '</div>';
-			$output .= '<a class="left carousel-control" href="#slide" role="button" data-slide="prev">';
-			$output .= '<span class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></span></a>';
-			$output .= '<a class="right carousel-control" href="#slide" role="button" data-slide="next">';
-			$output .= '<span class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></span></a></div>';
-			update_option( 'kratos_banners', $output );
-		}
-	}
+	$output = '<div class="top"><h2 class="title"><strong>置顶推荐</strong></h2><ul><li class="item"><a href="https://www.flyzy2005.com/fan-qiang/shadowsocks/build-shadowsocks-on-vps/"><img style="margin-top: 20px;" src="https://www.flyzy2005.com/wp-content/uploads/2017/12/shadowsocks.png" alt="搭建shadowsocks科学上网"><h3>科学上网：手把手教你搭建自己的ss</h3><p class="muted">
+2018比VPN靠谱的科学上网方式，搭建ss，全终端可用 ...</p></a></li><li class="item"><a href="https://www.flyzy2005.com/fan-qiang/shadowsocks/shadowsocks-config-multiple-users/"><img src="https://www.flyzy2005.com/wp-content/uploads/2018/03/favicon.png" alt="shadowsocks多用户管理与流量限制"><h3>shadowsocks多用户与流量限制</h3><p class="muted">
+配置shadowsocks多用户，监测每个用户使用流量，可视化界面...</p></a></li></ul></div>';
+//	$output = '
+//	if ( $output = get_option( 'kratos_banners' ) ) {
+//		$output           = '';
+//		$kratos_banner_on = kratos_option( "kratos_banner" ) ? kratos_option( "kratos_banner" ) : 0;
+//		if ( $kratos_banner_on ) {
+//			for ( $i = 1; $i < 6; $i ++ ) {
+//				$kratos_banner{$i}     = kratos_option( "kratos_banner{$i}" ) ? kratos_option( "kratos_banner{$i}" ) : "";
+//				$kratos_banner_url{$i} = kratos_option( "kratos_banner_url{$i}" ) ? kratos_option( "kratos_banner_url{$i}" ) : "";
+//				if ( $kratos_banner{$i} ) {
+//					$banners[]     = $kratos_banner{$i};
+//					$banners_url[] = $kratos_banner_url{$i};
+//				}
+//			}
+//			$count  = count( $banners );
+//			$output .= '<div id="slide" class="carousel slide" data-ride="carousel">';
+//			$output .= '<ol class="carousel-indicators">';
+//			for ( $i = 0; $i < $count; $i ++ ) {
+//				$output .= '<li data-target="#slide" data-slide-to="' . $i . '"';
+//				if ( $i == 0 ) {
+//					$output .= 'class="active"';
+//				}
+//
+//				$output .= '></li>';
+//			};
+//			$output .= '</ol>';
+//			$output .= '<div class="carousel-inner" role="listbox">';
+//			for ( $i = 0; $i < $count; $i ++ ) {
+//				$output .= '<div class="item';
+//				if ( $i == 0 ) {
+//					$output .= ' active';
+//				}
+//
+//				$output .= '">';
+//				if ( ! empty( $banners_url[ $i ] ) ) {
+//					$output .= '<a href="' . $banners_url[ $i ] . '"><img src="' . $banners[ $i ] . '"/></a>';
+//				} else {
+//					$output .= '<img src="' . $banners[ $i ] . '"/>';
+//				}
+//				$output .= "</div>";
+//			};
+//			$output .= '</div>';
+//			$output .= '<a class="left carousel-control" href="#slide" role="button" data-slide="prev">';
+//			$output .= '<span class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></span></a>';
+//			$output .= '<a class="right carousel-control" href="#slide" role="button" data-slide="next">';
+//			$output .= '<span class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></span></a></div>';
+//			update_option( 'kratos_banners', $output );
+//		}
+//	}
 	echo $output;
 }
 

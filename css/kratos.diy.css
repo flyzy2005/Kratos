@@ -1,4 +1,58 @@
 /* Kratos CSS Plus */
+@media screen and (max-width:768px) {
+    .top {
+        display: none;
+    }
+}
+.top {
+    overflow: hidden;
+    margin: 0 0 15px;
+}
+.top .title {
+    margin: 0;
+    line-height: 20px;
+    padding-left: 0.5rem;
+    font-size: 15px;
+    background-color: #fff;
+    height: 20px;
+    border-bottom: 1px solid #eaeaea;
+    font-weight: normal;
+}
+.top ul {
+    list-style: none;
+    padding: 0;
+}
+.top li {
+    list-style: none;
+    width: 50%;
+    float: left;
+    margin-bottom: 1px;
+}
+.top li a {
+    display: block;
+    background-color: #fff;
+    margin-right: 1px;
+    padding: 5px 20px 5px 140px;
+}
+.top img {
+    float: left;
+    margin: 8px 0 0 -120px;
+    max-width: 100px;
+    max-height: 70px;
+}
+.top h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: normal;
+    height: 35px;
+    overflow: hidden;
+}
+.top p {
+    overflow: hidden;
+    height: 40px;
+    color: #999999;
+    font-size: 12px;
+}
 .float-left {
     float: left!important;
 }
