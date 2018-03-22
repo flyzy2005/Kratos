@@ -1,4 +1,10 @@
 /* Kratos CSS Plus */
+.kratos-post-content a {
+    color: #00ccff;
+}
+.comment-body p a {
+    color: #00ccff;
+}
 @media screen and (max-width:768px) {
     .top {
         display: none;
