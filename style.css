@@ -1702,11 +1702,12 @@ table,table tbody tr th {
 }
 
 #kratos-widget-area .widget {
-	margin: 0 0 25px;
+	margin:0;
 	padding: 30px;
 	background-color: #fff;
 	box-shadow: 0 1px 2px rgba(0,0,0,.1);
-	border-radius: 0
+	border-radius: 0;
+	border-bottom: 2px solid #e7e7e7
 }
 
 #kratos-widget-area .amadeus_about {
@@ -1751,7 +1752,6 @@ table,table tbody tr th {
 }
 
 #kratos-widget-area .widget-title {
-	position: relative;
 	margin: 0 0 15px;
 	padding-bottom: 15px;
 	border-bottom: 1px solid #e7e7e7

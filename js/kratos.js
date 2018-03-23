@@ -111,6 +111,11 @@
 			});
 		}
 	}
+    var stickConfig = function() {
+        var top = 300 + 60;
+        $('#custom_html-2').stick_in_parent({offset_top:top});
+        $('.baidu_ad').stick_in_parent({offset_top:60});
+    };
 
 	var mobileMenuOutsideClick = function() {
 		$(document).click(function(e) {
@@ -315,7 +320,8 @@
 		//showPhotos();
 		donate();
         search();
-        sidebaraffix();
+        stickConfig();
+        //sidebaraffix();
 		//copyright();
 	});
 }());

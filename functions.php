@@ -74,6 +74,7 @@ function kratos_theme_scripts() {
 		wp_enqueue_script( 'superfish', $dir . '/js/superfish.js', array(), '1.0.0' );
 		wp_enqueue_script( 'kratos', $dir . '/js/kratos.js', array(), KRATOS_VERSION );
 		wp_enqueue_script( 'kratos-diy', $dir . '/js/kratos.diy.js', array(), KRATOS_VERSION );
+		wp_enqueue_script( 'sticky', $dir . '/js/sticky.min.js', array(), '1.1.3' );
 	}
 }
 

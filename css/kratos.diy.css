@@ -1,4 +1,10 @@
 /* Kratos CSS Plus */
+#sidebar {
+    height: 100%;
+}
+#kratos-widget-area {
+    position: inherit;
+}
 div#site-gonggao {
     line-height: 25px;
     height: 30px;
@@ -122,11 +128,7 @@ div#site-gonggao {
 }
 
 .widget_kratos_commentstab {
-    margin: 0 0 25px;
-    padding: 30px 10px 10px 10px;
-    background-color: #fff;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
-    border-radius: 0;
+    padding: 30px 10px 10px 10px !important;
 }
 
 .recent_comments .profile {
@@ -178,6 +180,15 @@ div#site-gonggao {
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
+    }
+    .main {
+        flex: 0 0 67%;
+    }
+    #kratos-widget-area {
+        flex: 0 0 33%;
+    }
+    .row {
+        display: flex;
     }
 }
 

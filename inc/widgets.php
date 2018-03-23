@@ -41,7 +41,7 @@ class kratos_widget_baidu_ad extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 		$script = $instance['script'] ? $instance['script'] : '';
-		echo $before_widget;
+		echo '<aside class="widget baidu_ad clearfix" style="padding: 0">';;
 		?>
 		<?php if(!empty($script)) {?>
             <?php echo $script; ?>
@@ -441,7 +441,7 @@ class kratos_widget_comments extends WP_Widget{
 			'post_status' => 'publish'
 		), $instance ) );
 		?>
-        <aside class="widget_kratos_commentstab">
+        <aside class="widget_kratos_commentstab widget">
             <h4 style="margin-left: 20px;" class="widget-title">近期评论</h4>
             <div class="recent_comments">
                 <?php
@@ -452,9 +452,9 @@ class kratos_widget_comments extends WP_Widget{
                                 <div class="meta clearfix">
                                     <div class="avatar float-left">
                                         <img alt style="border-radius: 50%;" src="<?php if ( $comment -> user_id == "1" ) {
-                                            echo "http://localhost:8080/wp-content/uploads/2018/01/flyzy-avatar.jpg";
+                                            echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/flyzy-avatar.jpg";
                                         } else {
-	                                        echo "http://localhost:8080/wp-content/uploads/2018/01/default-avatar.jpg";
+	                                        echo "http://192.168.1.111:8080/wp-content/uploads/2018/01/default-avatar.jpg";
                                         } ?>">
                                     </div>
                                     <div class="profile d-block">
