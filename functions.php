@@ -1649,4 +1649,4 @@ function spam_protection_pre($commentdata){
 	return $commentdata;
 }
 add_filter('preprocess_comment','spam_protection_pre');
-
+include ("gonggao.php");
