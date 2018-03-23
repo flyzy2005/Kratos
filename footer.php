@@ -7,7 +7,13 @@
  */; ?>
 <footer>
     <div id="footer">
+        <div class="bottom-fixed">
         <div class="gotop-box"><a href="#" class="gotop-btn"><i class="fa fa-chevron-up"></i></a></div>
+        <?php if (is_singular() && ( 'open' == $post->comment_status )){ ?>
+            <div class="comment-box"><a href="#respond" title="评论"><i class="fa fa-comment"></i></a> </div>
+	    <?php
+        }?>
+        </div>
         <div class="search-box"><i class="fa fa-search"></i>
             <form class="search-form" role="search" method="get" id="searchform" action="http://localhost:8080/"
                   style="width: 0;"><input type="text" name="s" id="search" placeholder="搜点什么呢？" style="display: none;">

@@ -3626,15 +3626,45 @@ img.size-smiley {
 	width:0
 }
 
-.gotop-box {
+.comment-box {
+	margin-bottom: 0.5rem;
+	z-index:999;
+	visibility:visible;
+	border-radius:.125rem;
+	color:#fff;
+	text-align:center;
+	opacity:1
+}
+.comment-box .fa {
+	display:table-cell;
+	width:2.5rem;
+	height:2.5rem;
+	vertical-align:middle;
+}
+.comment-box a {
+	display: table;
+	border-radius: .125rem;
+	background: rgba(0,0,0,.5);
+	color: #fff;
+	text-align: center;
+}
+.bottom-fixed {
 	position:fixed;
 	right:1.2rem;
-	bottom:7.25rem;
+	bottom:6.75rem;
+	z-index:999;
+	width:2.5rem;
+	visibility:visible;
+	border-radius:.125rem;
+}
+.gotop-box {
+	margin-bottom: 0.5rem;
 	z-index:999;
 	visibility:hidden;
 	width:2.5rem;
 	height:2.5rem;
 	opacity:0;
+	border-radius:.125rem;
 	-webkit-transition:.5s;
 	-o-transition:.5s;
 	transition:.5s
