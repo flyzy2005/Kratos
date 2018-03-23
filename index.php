@@ -34,6 +34,9 @@ if ( is_category() ) {
 					<?php endif; ?>
 					<?php
 				} elseif ( is_tag() ) {
+					kratos_banner();
+					global $query_string;
+					query_posts( $query_string . "&order=ASC" );
 					?>
 					<?php if ( kratos_option( 'show_head_tag' ) ): ?>
                         <div class="kratos-hentry clearfix">
@@ -43,6 +46,9 @@ if ( is_category() ) {
 					<?php endif; ?>
 					<?php
 				} elseif ( is_search() ) {
+					kratos_banner();
+					global $query_string;
+					query_posts( $query_string . "&order=ASC" );
 					?>
                     <div class="kratos-hentry clearfix">
                         <h1 class="kratos-post-header-title">搜索结果：<?php the_search_query(); ?></h1>
