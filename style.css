@@ -3004,14 +3004,8 @@ img.size-smiley {
 	overflow: hidden!important
 }
 
-#kratos-page {
-	position: relative;
-	-webkit-transition: .5s;
-	-o-transition: .5s;
-	transition: .5s
-}
 
-.kratos-offcanvas #kratos-page {
+.kratos-offcanvas #offcanvas-menu {
 	-moz-transform: translateX(-240px);
 	-webkit-transform: translateX(-240px);
 	-ms-transform: translateX(-240px);
@@ -3026,15 +3020,17 @@ img.size-smiley {
 }
 
 #offcanvas-menu {
-	position: absolute;
-	top: 0;
+	position: fixed;
 	bottom: 0;
 	z-index: 99;
 	background: #222;
 	right: -240px;
 	width: 240px;
 	padding: 20px;
-	overflow-y: scroll!important
+	overflow: hidden!important;
+	-webkit-transition: .5s;
+	-o-transition: .5s;
+	transition: .5s
 }
 
 #offcanvas-menu ul {

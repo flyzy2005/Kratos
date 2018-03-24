@@ -42,7 +42,7 @@
                     <div class="container">
                         <div class="nav-header">
 							<?php if ( has_nav_menu( 'header_menu' ) ) : ?>
-                                <a href="#" class="js-kratos-nav-toggle kratos-nav-toggle" style="margin: 0; line-height: 48px"><i></i></a>
+                                <a class="js-kratos-nav-toggle kratos-nav-toggle" style="margin: 0; line-height: 48px"><i></i></a>
 							<?php endif; ?>
 							<?php $site_logo = kratos_option( 'site_logo' ); ?>
 							<?php if ( ! empty( $site_logo ) ) { ?>
