@@ -49,6 +49,13 @@ div#site-gonggao {
     overflow: hidden;
 }
 
+#site-gonggao-div2 .list li p {
+    display: inline;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .kratos-post-content a {
     color: #00ccff;
 }
