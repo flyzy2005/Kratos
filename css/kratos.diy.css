@@ -181,12 +181,6 @@ div#site-gonggao {
         flex: 0 0 33.333333%;
         max-width: 33.333333%;
     }
-    .main {
-        flex: 0 0 67%;
-    }
-    #kratos-widget-area {
-        flex: 0 0 33%;
-    }
     .row {
         display: flex;
     }

@@ -14,9 +14,7 @@ get_header('banner'); ?>
 		<div class="row">
 			<?php if( $page_side_bar == 'left_side' ){ ?>
 				<aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
-	                <div id="sidebar">
 	                    <?php dynamic_sidebar('sidebar_tool'); ?>
-	                </div>
 	            </aside>
 			<?php } ?>
             <section id="main" class='<?php echo ($page_side_bar == 'single') ? 'col-md-12' : 'col-md-8'; ?>'>
@@ -53,9 +51,7 @@ get_header('banner'); ?>
 			</section>
 			<?php if($page_side_bar == 'right_side'){ ?>
 			<aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
-                <div id="sidebar">
                     <?php dynamic_sidebar('sidebar_tool'); ?>
-                </div>
             </aside>
 			<?php } ?>
 		</div>
