@@ -1487,7 +1487,7 @@ table,table tbody tr th {
 .comment-list {
 	padding: 0;
 }
-.comment-list * {
+.comment-list .children {
 	padding: 0;
 }
 .comments-area ol {
