@@ -44,9 +44,19 @@ class kratos_widget_baidu_ad extends WP_Widget {
 		echo '<aside class="widget baidu_ad clearfix" style="padding: 0">';;
 		?>
 		<?php if(!empty($script)) {?>
-            <?php echo $script; ?>
-		<?php }?>
-		<?php
+			<?php echo $script; ?>
+		<?php } else { ?>
+            <h4 class="widget-title" style="margin: 30px;">VPS推荐</h4>
+            <a href="https://www.flyzy2005.com/go/?vultr" target="_blank"><img src="https://www.flyzy2005.com/wp-content/uploads/2018/03/vultr_banner.png" style="width=100%"></a>
+		<?php }
+		echo '<aside id="custom_html-2" class="widget_text widget widget_custom_html clearfix">
+<h4 class="widget-title">更多</h4>
+<div class="textwidget custom-html-widget">
+<a class="sidebar-about-a" href="https://www.flyzy2005.com/contact-me/" target="_blank" style="color: #1E90FF" title="关于我 &amp; 关于flyzy小站">关于本站</a><br> 
+<a class="sidebar-about-a" href="https://www.flyzy2005.com/guestbook/" target="_blank" style="color: #1E90FF" title="说你想说的">留个脚印</a><br> 
+<a class="sidebar-about-a" href="https://www.flyzy2005.com/paid-service/" target="_blank" style="color: #1E90FF" title="我是土豪，快来帮我解决这个问题">有偿服务</a><br> 
+<a class="sidebar-about-a" href="https://www.flyzy2005.com/go/go.php?url=https://t.me/flyzythink" style="color: #1E90FF" target="_blank" title="随手分享正能量">Telegram频道</a><br> 
+<a class="sidebar-about-a" href="https://www.flyzy2005.com/go/go.php?url=https://t.me/joinchat/HzU9V0blRW-owYAIXDCnuw" target="_blank" style="color: #1E90FF" title="加入群组，随意聊天">Telegram群组</a></div></aside>';
 		echo $after_widget;
 	}
 
