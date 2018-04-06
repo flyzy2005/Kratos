@@ -1,4 +1,11 @@
 /* Kratos CSS Plus */
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+.widget_kratos_poststab span{
+    color: #1E90FF !important;
+}
 #sidebar {
     height: 100%;
 }
