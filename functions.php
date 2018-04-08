@@ -1651,3 +1651,36 @@ function spam_protection_pre($commentdata){
 }
 add_filter('preprocess_comment','spam_protection_pre');
 include ("gonggao.php");
+
+//评论&评论者的url添加外部跳转
+add_filter( 'comment_text', 'add_redirect_comment_link', 99 );
+function add_redirect_comment_link( $text = '' ) {
+	preg_match_all( '/<a(.*?)href="(.*?)"(.*?)>/', $text, $matches );
+	if ( $matches ) {
+		foreach ( $matches[2] as $val ) {
+			if ( strpos( $val, '://' ) !== false && strpos( $val, "flyzy2005.com" ) === false && ! preg_match( '/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i', $val ) ) {
+				$text = str_replace( "href=\"$val\"", "href=\"" . home_url() . "/go/go.php?url=$val\" ", $text );
+			}
+		}
+		foreach ( $matches[1] as $val ) {
+			$text = str_replace( "<a".$val, "<a".$val." target=\"_blank\" ", $text );
+		}
+	}
+	return $text;
+}
+
+add_filter( 'get_comment_author_link', 'add_redirect_author_link', 5 );
+function add_redirect_author_link( $text = '' ) {
+	preg_match_all( "/<a(.*?)href='(.*?)'(.*?)>/", $text, $matches );
+	if ( $matches ) {
+		foreach ( $matches[2] as $val ) {
+			if ( strpos( $val, '://' ) !== false && strpos( $val, "flyzy2005.com" ) === false && ! preg_match( '/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i', $val ) ) {
+				$text = str_replace( "href='$val'", "href='" . home_url() . "/go/go.php?url=$val' ", $text );
+			}
+		}
+		foreach ( $matches[1] as $val ) {
+			$text = str_replace( "<a".$val, "<a".$val." target=\"_blank\" ", $text );
+		}
+	}
+	return $text;
+}
