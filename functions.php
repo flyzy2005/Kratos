@@ -1388,6 +1388,9 @@ function the_content_nofollow($content) {
 			if(strpos($val,'://')!==false && strpos($val,home_url())===false && !preg_match('/\.(jpg|jepg|png|ico|bmp|gif|tiff)/i',$val)){
 				$content=str_replace("href=\"$val\"", "href=\"".home_url()."/go/go.php?url=$val\" ",$content);
 			}
+			if(strpos($val,"/goto/")==true) {
+				$content = str_replace( "href=\"".$val."\"", " target=\"_blank\" "."href=\"".$val."\"", $content );
+			}
 		}
 	}
 	return $content;
