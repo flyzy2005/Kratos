@@ -172,7 +172,7 @@ function kratos_auto_post_link( $content ) {
 	return $content;
 }
 
-add_filter( 'the_content', 'kratos_auto_post_link', 0 );
+//add_filter( 'the_content', 'kratos_auto_post_link', 0 );
 
 /**
  * Init theme
@@ -580,7 +580,11 @@ function kratos_keywords() {
 		#echo trim(wp_title('',FALSE)).',';
 		$str = '';
 		if ( has_tag() ) {
+			$i = 0;
 			foreach ( ( get_the_tags() ) as $tag ) {
+				$i++;
+				if ($i > 5 )
+					break;
 				$str .= $tag->name . ',';
 			}
 		}
