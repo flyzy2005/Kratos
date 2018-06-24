@@ -6,27 +6,23 @@
  * @version 2.3
  */
 
-get_header(); ?>
-<?php
-
-if ( is_category() ) {
-	get_header( 'abstract' );
-} else {
-	get_header( 'banner' );
-} ?>
+get_header();
+get_header( 'banner' ); ?>
 <div id="kratos-blog-post" style="background:<?php echo kratos_option( 'background_index_color' ); ?>">
     <div class="container">
         <div class="row">
             <section id="main" class="col-md-8">
 				<?php
 				if ( is_home() ) {
-					kratos_banner();
+					if ( kratos_option( 'top_post' ) == 1 ) :
+						kratos_banner();
+					endif;
 				} elseif ( is_category() ) {
-					kratos_banner();
-					global $query_string;
-					query_posts( $query_string . "&order=ASC" );
+					if ( kratos_option( 'top_post' ) == 1 ) :
+						kratos_banner();
+					endif;
 					?>
-					<?php if ( kratos_option( 'show_head_cat' ) ): ?>
+					<?php if ( kratos_option( 'show_head_cat' ) ) : ?>
                         <div class="kratos-hentry clearfix">
                             <h1 class="kratos-post-header-title">分类：<?php echo single_cat_title( '', false ); ?></h1>
                             <h1 class="kratos-post-header-title"><?php echo category_description(); ?></h1>
@@ -34,11 +30,11 @@ if ( is_category() ) {
 					<?php endif; ?>
 					<?php
 				} elseif ( is_tag() ) {
-					kratos_banner();
-					global $query_string;
-					query_posts( $query_string . "&order=ASC" );
+					if ( kratos_option( 'top_post' ) == 1 ) :
+						kratos_banner();
+					endif;
 					?>
-					<?php if ( kratos_option( 'show_head_tag' ) ): ?>
+					<?php if ( kratos_option( 'show_head_tag' ) ) : ?>
                         <div class="kratos-hentry clearfix">
                             <h1 class="kratos-post-header-title">标签：<?php echo single_cat_title( '', false ); ?></h1>
                             <h1 class="kratos-post-header-title"><?php echo category_description(); ?></h1>
@@ -46,9 +42,9 @@ if ( is_category() ) {
 					<?php endif; ?>
 					<?php
 				} elseif ( is_search() ) {
-					kratos_banner();
-					global $query_string;
-					query_posts( $query_string . "&order=ASC" );
+					if ( kratos_option( 'top_post' ) == 1 ) :
+						kratos_banner();
+					endif;
 					?>
                     <div class="kratos-hentry clearfix">
                         <h1 class="kratos-post-header-title">搜索结果：<?php the_search_query(); ?></h1>
@@ -73,7 +69,7 @@ if ( is_category() ) {
 				<?php wp_reset_query(); ?>
             </section>
             <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
-					<?php dynamic_sidebar( 'sidebar_tool' ); ?>
+				<?php dynamic_sidebar( 'sidebar_tool' ); ?>
             </aside>
         </div>
     </div>
